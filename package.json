@@ -25,12 +25,14 @@
         "@atlaskit/css-reset": "6.3.4",
         "@styled-jsx/plugin-sass": "4.0.2",
         "axios": "0.24.0",
+        "marked": "4.0.7",
         "next": "10.0.0",
         "react": "17.0.1",
         "react-dom": "17.0.1",
         "sass": "1.45.2"
     },
     "devDependencies": {
+        "@types/marked": "4.0.2",
         "@types/node": "14.14.37",
         "@types/react": "17.0.3",
         "@typescript-eslint/eslint-plugin": "4.19.0",
