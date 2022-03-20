@@ -9,6 +9,9 @@ import { readMarkdownFile, verifyDate, verifySlug } from "utils"
 import withPageLayout from "components/PageLayout/withPageLayout"
 import globalConstants from "globalConstants"
 
+const env = process.env.NODE_ENV || "development"
+const isProd = env === "production"
+
 type PageProps = {
     isWrongPath: boolean
     markdown?: string
@@ -103,7 +106,9 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
                 `
             },
             image: (href: string, title: string, text: string): string => {
-                return `<img src="/notes/${date}/${slug}/${href}" alt="${text}">`
+                const prefix = "https://raw.githubusercontent.com/hungdoansy/portfolio/main/public"
+                const src = (isProd ? prefix : "") + `/notes/${date}/${slug}/${href}`
+                return `<img src="${src}" alt="${text}">`
             },
             link(href: string, title: string, text: string): string | false {
                 if (href.startsWith("http") && href.indexOf(globalConstants.SiteURL) === -1) {
