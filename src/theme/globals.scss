@@ -1,0 +1,55 @@
+@font-face{
+    font-feature-settings:"liga","tnum","case","calt","zero","ss01","locl";
+    font-display:swap;
+    font-family:Inter;
+    font-style:normal;
+    font-weight:400;
+    src:url(/fonts/Inter-Regular.woff2) format("woff2")
+}
+@font-face{
+    font-feature-settings:"liga","tnum","case","calt","zero","ss01","locl";
+    font-display:swap;
+    font-family:Inter;
+    font-style:italic;
+    font-weight:400;
+    src:url(/fonts/Inter-Italic.woff2) format("woff2")
+}
+@font-face{
+    font-feature-settings:"liga","tnum","case","calt","zero","ss01","locl";
+    font-display:swap;
+    font-family:Inter;
+    font-style:normal;
+    font-weight:700;
+    src:url(/fonts/Inter-Bold.woff2) format("woff2")
+}
+@font-face{
+    font-feature-settings:"liga","tnum","case","calt","zero","ss01","locl";
+    font-display:swap;
+    font-family:Inter;
+    font-style:italic;
+    font-weight:700;
+    src:url(/fonts/Inter-BoldItalic.woff2) format("woff2")
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container-center {
+    @apply px-5 md:px-0 w-screen md:w-[680px] mx-auto;
+}
+
+.center-horizontal {
+    @apply flex items-center;
+}
+
+@layer components {
+    #__next {
+        @apply min-h-screen flex flex-col;
+    }
+    html,
+    body {
+        @apply min-h-screen;
+        font-variant-numeric: slashed-zero;
+    }
+}
