@@ -51,6 +51,7 @@ export const getNotesAtDate = (date: string): Note[] => {
                     slug,
                     title: (token as marked.Tokens.Heading).text,
                     href: constructHref(date, slug),
+                    date,
                 })
             }
         })
@@ -80,6 +81,7 @@ export const getRecentCollections = (): NoteCollection[] => {
                     slug,
                     title: (token as marked.Tokens.Heading).text,
                     href: constructHref(date, slug),
+                    date,
                 })
             }
         })

@@ -30,14 +30,10 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const collections = getRecentCollections()
     const notes = collections
         .reduce((acc, collection) => {
-            const notes = collection.notes.map((note) => ({
-                ...note,
-                title: `${collection.date} - ${note.title}`,
-            }))
-            acc.push(...notes)
+            acc.push(...collection.notes)
             return acc
         }, [] as Note[])
-        .slice(0, 5)
+        .slice(0, 7)
 
     return {
         props: {
@@ -81,6 +77,15 @@ const HomePage: NextPage<Props> = ({ notes }) => {
                     {notes.map((note) => {
                         return (
                             <li key={note.slug}>
+                                <span
+                                    style={{
+                                        display: "inline-block",
+                                        width: "100px",
+                                        color: "#989693",
+                                    }}
+                                >
+                                    {note.date}
+                                </span>
                                 <Link href={note.href}>{note.title}</Link>
                             </li>
                         )
