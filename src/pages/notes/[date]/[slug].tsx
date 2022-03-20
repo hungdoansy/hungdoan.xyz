@@ -7,6 +7,7 @@ import "highlight.js/styles/base16/equilibrium-light.css"
 import Page404 from "pages/404"
 import { readMarkdownFile, verifyDate, verifySlug } from "utils"
 import withPageLayout from "components/PageLayout/withPageLayout"
+import globalConstants from "globalConstants"
 
 type PageProps = {
     isWrongPath: boolean
@@ -104,6 +105,13 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
             image: (href: string, title: string, text: string): string => {
                 return `<img src="/notes/${date}/${slug}/${href}" alt="${text}">`
             },
+            link(href: string, title: string, text: string): string | false {
+                if (href.startsWith("http") && href.indexOf(globalConstants.SiteURL) === -1) {
+                    return `<a class="external-link" href='${href}' target="_blank" rel="noopener">${text} ↗</a>`
+                }
+
+                return false
+            },
         }
         marked.use({ renderer: customRenderer })
         content = marked.parse(markdown)
@@ -112,7 +120,7 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
     if (isWrongPath) {
         return <Page404 />
     }
-    return <main className="github-theme my-10" dangerouslySetInnerHTML={{ __html: content }} />
+    return <main className="github-theme noteContent" dangerouslySetInnerHTML={{ __html: content }} />
 }
 
 export default withPageLayout(NotePage)

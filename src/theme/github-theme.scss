@@ -919,22 +919,24 @@ mjx-container[jax="SVG"] > svg {
     background: #f5f3f0aa;
 }
 
-.github-theme .post-date {
-    @apply mr-5 text-gray-400;
-    font-variant-numeric: tabular-nums slashed-zero;
-}
-
 a:target {
-    border-bottom: 0.25em solid #bdffec;
+    border-bottom: 0.25em solid #38b2ac;
 }
 
-.post-content > h1 ~ p,
-.post-content > h1 ~ ul:not(.post-content > h2:last-of-type ~ ul) {
+.noteContent > h1 ~ p,
+.noteContent > h1 ~ ul:not(.noteContent > h2:last-of-type ~ ul) {
     a {
-        @apply underline decoration-slate-400 decoration-dotted decoration-2 underline-offset-4;
+        text-decoration-line: underline;
+        text-decoration-color: #94a3b8;
+        text-decoration-style: dotted;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
 
         &:hover {
-            @apply underline decoration-slate-200 decoration-solid decoration-2 underline-offset-4;
+            text-decoration-color: #e2e8f0;
+            text-decoration-style: solid;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
         }
     }
 }
