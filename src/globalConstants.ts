@@ -1,6 +1,6 @@
 const globalConstants = {
     DefaultMarkdownFile: "note.md",
-    SiteURL: "https://portfolio-tan-omega.vercel.app",
+    SiteURL: "https://www.hungdoansy.me",
 }
 
 export default globalConstants
