@@ -1,217 +1,68 @@
 import Head from "next/head"
-import { useEffect, useState } from "react"
+import Link from "next/link"
 
-import HelloWorld from "components/HelloWorld"
+import withPageLayout from "components/PageLayout/withPageLayout"
 
-const Home: React.FC = () => {
-    const [count, setCount] = useState(1)
-    useEffect(() => {
-        if (count < 5) {
-            setCount(count + 1)
-            console.log("count", count)
-        }
-    }, [count])
-
+const GithubSVG = () => {
     return (
-        <div className="container">
-            <Head>
-                <title>Create Next App</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
-            <main>
-                <h1 className="title">
-                    Welcome to <a href="https://nextjs.org">Next.js!</a>
-                </h1>
-
-                <p className="description">
-                    Get started by editing <code>pages/index.js</code>
-                </p>
-
-                <div className="grid">
-                    <a href="https://nextjs.org/docs" className="card">
-                        <h3>Documentation &rarr;</h3>
-                        <p>Find in-depth information about Next.js features and API.</p>
-                    </a>
-
-                    <a href="https://nextjs.org/learn" className="card">
-                        <h3>Learn &rarr;</h3>
-                        <p>Learn about Next.js in an interactive course with quizzes!</p>
-                    </a>
-
-                    <a href="https://github.com/vercel/next.js/tree/master/examples" className="card">
-                        <h3>Examples &rarr;</h3>
-                        <p>Discover and deploy boilerplate example Next.js projects.</p>
-                    </a>
-
-                    <a
-                        href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                        className="card"
-                    >
-                        <h3>Deploy &rarr;</h3>
-                        <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-                    </a>
-
-                    <HelloWorld />
-                </div>
-            </main>
-
-            <footer>
-                <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-                </a>
-            </footer>
+        <svg className="logo" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>GitHub</title>
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
 
             <style jsx>{`
-                .container {
-                    min-height: 100vh;
-                    padding: 0 0.5rem;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                main {
-                    padding: 5rem 0;
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                footer {
-                    width: 100%;
-                    height: 100px;
-                    border-top: 1px solid #eaeaea;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                footer img {
-                    margin-left: 0.5rem;
-                }
-
-                footer a {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                a {
-                    color: inherit;
-                    text-decoration: none;
-                }
-
-                .title a {
-                    color: #0070f3;
-                    text-decoration: none;
-
-                    &:hover,
-                    &:focus,
-                    &:active {
-                        text-decoration: underline;
-                    }
-                }
-
-                .title {
-                    margin: 0;
-                    line-height: 1.15;
-                    font-size: 4rem;
-                }
-
-                .title,
-                .description {
-                    text-align: center;
-                }
-
-                .description {
-                    line-height: 1.5;
-                    font-size: 1.5rem;
-                }
-
-                code {
-                    background: #fafafa;
-                    border-radius: 5px;
-                    padding: 0.75rem;
-                    font-size: 1.1rem;
-                    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-                        Bitstream Vera Sans Mono, Courier New, monospace;
-                }
-
-                .grid {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-wrap: wrap;
-
-                    max-width: 800px;
-                    margin-top: 3rem;
-                }
-
-                .card {
-                    margin: 1rem;
-                    flex-basis: 45%;
-                    padding: 1.5rem;
-                    text-align: left;
-                    color: inherit;
-                    text-decoration: none;
-                    border: 1px solid #eaeaea;
-                    border-radius: 10px;
-                    transition: color 0.15s ease, border-color 0.15s ease;
-                }
-
-                .card:hover,
-                .card:focus,
-                .card:active {
-                    color: #0070f3;
-                    border-color: #0070f3;
-                }
-
-                .card h3 {
-                    margin: 0 0 1rem 0;
-                    font-size: 1.5rem;
-                }
-
-                .card p {
-                    margin: 0;
-                    font-size: 1.25rem;
-                    line-height: 1.5;
-                }
-
                 .logo {
+                    display: inline-block;
                     height: 1em;
                 }
-
-                @media (max-width: 600px) {
-                    .grid {
-                        width: 100%;
-                        flex-direction: column;
-                    }
-                }
             `}</style>
-
-            <style jsx global>{`
-                html,
-                body {
-                    padding: 0;
-                    margin: 0;
-                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-                        Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-                }
-
-                * {
-                    box-sizing: border-box;
-                }
-            `}</style>
-        </div>
+        </svg>
     )
 }
 
-export default Home
+const HomePage: React.FC = () => {
+    return (
+        <>
+            <Head>
+                <title>/home/hung</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+
+            <main className="github-theme no-list">
+                <p>Hello! I&apos;m Hung. Welcome to my space on the internet!</p>
+                <p>
+                    I&apos;m a simple & regular FrontEnd Developer. I&apos;m currently based in{" "}
+                    <Link href="https://kyber.network">Kyber Network</Link>, Hanoi, Vietnam.
+                </p>
+                <p>This is where I noted down interesting (boring and weird at times) stuff.</p>
+
+                <h2>Contact</h2>
+                <p>In case you&apos;re interested:</p>
+                <ul>
+                    <li>
+                        -&gt; <Link href="https://github.com/hungdoansy">Find me on GitHub</Link>
+                    </li>
+                    <li>
+                        -&gt; <Link href="mailto:hey@syhung.me">Contact me</Link>
+                    </li>
+                </ul>
+
+                <h2>P/S</h2>
+                <p>
+                    This website was inspired by
+                    <a
+                        style={{
+                            marginLeft: "4px",
+                        }}
+                        href="https://github.com/huytd"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        huytd <GithubSVG />
+                    </a>
+                </p>
+            </main>
+        </>
+    )
+}
+
+export default withPageLayout(HomePage)

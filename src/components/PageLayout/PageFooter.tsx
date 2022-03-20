@@ -18,6 +18,11 @@ const PageFooter: React.FC = () => {
                     font-size: 0.875rem;
                     line-height: 1.25rem;
                 }
+
+                .centerContainer {
+                    display: flex;
+                    justify-content: space-between;
+                }
             `}</style>
         </footer>
     )
