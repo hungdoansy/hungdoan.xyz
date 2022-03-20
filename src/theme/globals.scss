@@ -1,55 +1,68 @@
-@font-face{
-    font-feature-settings:"liga","tnum","case","calt","zero","ss01","locl";
-    font-display:swap;
-    font-family:Inter;
-    font-style:normal;
-    font-weight:400;
-    src:url(/fonts/Inter-Regular.woff2) format("woff2")
-}
-@font-face{
-    font-feature-settings:"liga","tnum","case","calt","zero","ss01","locl";
-    font-display:swap;
-    font-family:Inter;
-    font-style:italic;
-    font-weight:400;
-    src:url(/fonts/Inter-Italic.woff2) format("woff2")
-}
-@font-face{
-    font-feature-settings:"liga","tnum","case","calt","zero","ss01","locl";
-    font-display:swap;
-    font-family:Inter;
-    font-style:normal;
-    font-weight:700;
-    src:url(/fonts/Inter-Bold.woff2) format("woff2")
-}
-@font-face{
-    font-feature-settings:"liga","tnum","case","calt","zero","ss01","locl";
-    font-display:swap;
-    font-family:Inter;
-    font-style:italic;
-    font-weight:700;
-    src:url(/fonts/Inter-BoldItalic.woff2) format("woff2")
+html,
+body {
+    min-height: 100vh;
+    font-variant-numeric: slashed-zero;
+
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+    tab-size: 4;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue,
+        Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.container-center {
-    @apply px-5 md:px-0 w-screen md:w-[680px] mx-auto;
+#__next {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.center-horizontal {
-    @apply flex items-center;
+.centerContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vw;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
 }
 
-@layer components {
-    #__next {
-        @apply min-h-screen flex flex-col;
+@media (min-width: 768px) {
+    .centerContainer {
+        width: 680px;
+        padding-left: 0;
+        padding-right: 0;
     }
-    html,
-    body {
-        @apply min-h-screen;
-        font-variant-numeric: slashed-zero;
-    }
+}
+
+// Place these font imports below to avoid blocking the first render
+@font-face {
+    font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+    font-display: swap;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/Inter-Regular.woff2) format("woff2");
+}
+@font-face {
+    font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+    font-display: swap;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 400;
+    src: url(/fonts/Inter-Italic.woff2) format("woff2");
+}
+@font-face {
+    font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+    font-display: swap;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    src: url(/fonts/Inter-Bold.woff2) format("woff2");
+}
+@font-face {
+    font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+    font-display: swap;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 700;
+    src: url(/fonts/Inter-BoldItalic.woff2) format("woff2");
 }

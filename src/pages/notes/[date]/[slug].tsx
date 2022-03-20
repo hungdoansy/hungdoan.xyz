@@ -5,6 +5,7 @@ import { LineFocusPlugin } from "highlightjs-focus"
 import "highlight.js/styles/base16/equilibrium-light.css"
 
 import { readMarkdownFile, verifyDate, verifySlug } from "utils"
+import withPageLayout from "components/PageLayout/withPageLayout"
 
 type PageProps = {
     isWrongPath: boolean
@@ -100,4 +101,4 @@ const NotePage: NextPage<PageProps> = ({ markdown, noteTitle, date, slug, isWron
     )
 }
 
-export default NotePage
+export default withPageLayout(NotePage)
