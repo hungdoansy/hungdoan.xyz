@@ -1,5 +1,5 @@
 const globalConstants = {
-    DefaultMarkdownFile: "index.md",
+    DefaultMarkdownFile: "note.md",
     SiteURL: "https://huy.rocks",
 }
 
