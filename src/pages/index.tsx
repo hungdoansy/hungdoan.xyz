@@ -1,7 +1,14 @@
+import { GetStaticProps, NextPage } from "next"
 import Head from "next/head"
 import Link from "next/link"
 
 import withPageLayout from "components/PageLayout/withPageLayout"
+import { getRecentCollections } from "utils"
+import { Note } from "model"
+
+type Props = {
+    notes: Note[]
+}
 
 const GithubSVG = () => {
     return (
@@ -19,7 +26,27 @@ const GithubSVG = () => {
     )
 }
 
-const HomePage: React.FC = () => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+    const collections = getRecentCollections()
+    const notes = collections
+        .reduce((acc, collection) => {
+            const notes = collection.notes.map((note) => ({
+                ...note,
+                title: `${collection.date} - ${note.title}`,
+            }))
+            acc.push(...notes)
+            return acc
+        }, [] as Note[])
+        .slice(0, 5)
+
+    return {
+        props: {
+            notes,
+        },
+    }
+}
+
+const HomePage: NextPage<Props> = ({ notes }) => {
     return (
         <>
             <Head>
@@ -27,7 +54,7 @@ const HomePage: React.FC = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className="github-theme no-list">
+            <main className="github-theme">
                 <p>Hello! I&apos;m Hung. Welcome to my space on the internet!</p>
                 <p>
                     I&apos;m a simple & regular FrontEnd Developer. I&apos;m currently based in{" "}
@@ -37,13 +64,27 @@ const HomePage: React.FC = () => {
 
                 <h2>Contact</h2>
                 <p>In case you&apos;re interested:</p>
-                <ul>
+                <ul style={{ listStyle: "none" }}>
                     <li>
                         -&gt; <Link href="https://github.com/hungdoansy">Find me on GitHub</Link>
                     </li>
                     <li>
                         -&gt; <Link href="mailto:hey@syhung.me">Contact me</Link>
                     </li>
+                </ul>
+
+                <h2>
+                    <Link href="/notes">Notes</Link>
+                </h2>
+                <p>Some of my recent notes</p>
+                <ul>
+                    {notes.map((note) => {
+                        return (
+                            <li key={note.slug}>
+                                <Link href={note.href}>{note.title}</Link>
+                            </li>
+                        )
+                    })}
                 </ul>
 
                 <h2>P/S</h2>

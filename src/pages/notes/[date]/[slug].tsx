@@ -4,13 +4,13 @@ import hljs from "highlight.js"
 import { LineFocusPlugin } from "highlightjs-focus"
 import "highlight.js/styles/base16/equilibrium-light.css"
 
+import Page404 from "pages/404"
 import { readMarkdownFile, verifyDate, verifySlug } from "utils"
 import withPageLayout from "components/PageLayout/withPageLayout"
 
 type PageProps = {
     isWrongPath: boolean
     markdown?: string
-    noteTitle?: string
     date?: string
     slug?: string
 }
@@ -49,7 +49,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
     return {
         props: {
             markdown,
-            noteTitle: "heeh",
             date,
             slug,
             isWrongPath: false,
@@ -57,7 +56,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
     }
 }
 
-const NotePage: NextPage<PageProps> = ({ markdown, noteTitle, date, slug, isWrongPath }) => {
+const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) => {
     let content = ""
     if (!isWrongPath) {
         hljs.addPlugin(
@@ -80,8 +79,29 @@ const NotePage: NextPage<PageProps> = ({ markdown, noteTitle, date, slug, isWron
         })
 
         const customRenderer = {
+            heading(text: string, level: 1 | 2 | 3 | 4 | 5 | 6) {
+                const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-")
+                if (level === 1) {
+                    const tag = "h1"
+                    return `
+                        <${tag}>
+                            <a class="font-bold" name="${escapedText}" href="#">
+                                ${date} - ${text}
+                            </a>
+                        </${tag}>
+                    `
+                }
+
+                const tag = `h${level}`
+                return `
+                    <${tag}>
+                        <a class="font-bold" name="${escapedText}" href="#${escapedText}">
+                            ${text}
+                        </a>
+                    </${tag}>
+                `
+            },
             image: (href: string, title: string, text: string): string => {
-                console.log({ href, title, text })
                 return `<img src="/notes/${date}/${slug}/${href}" alt="${text}">`
             },
         }
@@ -89,16 +109,10 @@ const NotePage: NextPage<PageProps> = ({ markdown, noteTitle, date, slug, isWron
         content = marked.parse(markdown)
     }
 
-    console.log("render")
-
     if (isWrongPath) {
-        return <div>Wrong path</div>
+        return <Page404 />
     }
-    return (
-        <div>
-            <div className="github-theme my-10" dangerouslySetInnerHTML={{ __html: content }} />
-        </div>
-    )
+    return <main className="github-theme my-10" dangerouslySetInnerHTML={{ __html: content }} />
 }
 
 export default withPageLayout(NotePage)

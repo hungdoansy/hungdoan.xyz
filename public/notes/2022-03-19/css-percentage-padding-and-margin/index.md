@@ -1,4 +1,6 @@
-# 02.23.2022 - CSS/Percentage Padding and Margin
+# CSS/Percentage Padding and Margin - Author: huytd
+
+## For testing purposes only
 
 When you specify a percentage value for the CSS padding or margin of an element, this percentage is **based on the width of the containing block**, not the width of the element itself.
 
