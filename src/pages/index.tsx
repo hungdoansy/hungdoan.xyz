@@ -74,7 +74,7 @@ const HomePage: NextPage<Props> = ({ notes }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className="github-theme">
+            <div className="github-theme">
                 <p>Hello! I&apos;m Hung. Welcome to my space on the internet!</p>
                 <p>
                     I&apos;m a simple & regular FrontEnd Developer. I&apos;m currently based in{" "}
@@ -130,7 +130,7 @@ const HomePage: NextPage<Props> = ({ notes }) => {
                         huytd <GithubSVG />
                     </a>
                 </p>
-            </main>
+            </div>
         </>
     )
 }

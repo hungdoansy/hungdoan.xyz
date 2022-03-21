@@ -3,9 +3,9 @@ import { NextPage } from "next"
 
 const Page404: NextPage = () => {
     return (
-        <main>
+        <div>
             <h1>This URL doesn&apos;t seem to be valid 😟</h1>
-        </main>
+        </div>
     )
 }
 

@@ -1,6 +1,6 @@
 const PageBody: React.FC = ({ children }) => {
     return (
-        <div className="pageBody centerContainer">
+        <main className="pageBody centerContainer">
             {children}
             <style jsx>{`
                 .pageBody {
@@ -10,7 +10,7 @@ const PageBody: React.FC = ({ children }) => {
                     margin-bottom: 2rem;
                 }
             `}</style>
-        </div>
+        </main>
     )
 }
 

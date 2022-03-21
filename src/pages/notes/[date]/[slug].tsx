@@ -89,7 +89,7 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
                     const tag = "h1"
                     return `
                         <${tag}>
-                            <a class="font-bold" name="${escapedText}" href="#">
+                            <a class="font-bold" href="#">
                                 ${date} - ${text}
                             </a>
                         </${tag}>
@@ -99,7 +99,7 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
                 const tag = `h${level}`
                 return `
                     <${tag}>
-                        <a class="font-bold" name="${escapedText}" href="#${escapedText}">
+                        <a class="font-bold" href="#${escapedText}">
                             ${text}
                         </a>
                     </${tag}>
@@ -125,7 +125,7 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
     if (isWrongPath) {
         return <Page404 />
     }
-    return <main className="github-theme noteContent" dangerouslySetInnerHTML={{ __html: content }} />
+    return <div className="github-theme noteContent" dangerouslySetInnerHTML={{ __html: content }} />
 }
 
 export default withPageLayout(NotePage)
