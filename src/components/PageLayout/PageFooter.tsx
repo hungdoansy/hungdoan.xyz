@@ -2,8 +2,9 @@ const PageFooter: React.FC = () => {
     return (
         <footer className="pageFooter">
             <div className="centerContainer">
-                <span>☕ buy me a coffee?</span>
-                <span>📮 RSS</span>
+                {/* <span>☕ buy me a coffee?</span>
+                <span>📮 RSS</span> */}
+                <span>a dummy footer</span>
             </div>
             <style jsx>{`
                 .pageFooter {
