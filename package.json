@@ -9,7 +9,7 @@
     ],
     "author": "Sy-Hung Doan <hungdoansy@gmail.com>",
     "engines": {
-        "node": "^14.0.0",
+        "node": "^16.0.0",
         "yarn": "^1.0.0"
     },
     "scripts": {
