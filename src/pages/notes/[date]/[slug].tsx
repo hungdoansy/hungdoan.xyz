@@ -4,7 +4,7 @@ import hljs from "highlight.js"
 import { LineFocusPlugin } from "highlightjs-focus"
 import "highlight.js/styles/base16/equilibrium-light.css"
 
-import Page404 from "pages/404"
+import { Page404WithoutPageLayout } from "pages/404"
 import { readMarkdownFile, verifyDate, verifySlug } from "utils"
 import withPageLayout from "components/PageLayout/withPageLayout"
 import globalConstants from "globalConstants"
@@ -123,7 +123,7 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
     }
 
     if (isWrongPath) {
-        return <Page404 />
+        return <Page404WithoutPageLayout />
     }
     return <div className="github-theme noteContent" dangerouslySetInnerHTML={{ __html: content }} />
 }

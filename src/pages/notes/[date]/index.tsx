@@ -4,7 +4,7 @@ import Link from "next/link"
 import { getNotesAtDate, verifyDate } from "utils"
 import withPageLayout from "components/PageLayout/withPageLayout"
 import { Note } from "model"
-import Page404 from "pages/404"
+import { Page404WithoutPageLayout } from "pages/404"
 
 type Props = {
     isWrongPath: boolean
@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 const NotePage: NextPage<Props> = ({ date, notes, isWrongPath }) => {
     if (isWrongPath) {
-        return <Page404 />
+        return <Page404WithoutPageLayout />
     }
 
     return (

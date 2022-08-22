@@ -1,7 +1,7 @@
 import withPageLayout from "components/PageLayout/withPageLayout"
 import { NextPage } from "next"
 
-const Page404: NextPage = () => {
+export const Page404WithoutPageLayout: NextPage = () => {
     return (
         <div>
             <h1>This URL doesn&apos;t seem to be valid 😟</h1>
@@ -9,4 +9,4 @@ const Page404: NextPage = () => {
     )
 }
 
-export default withPageLayout(Page404)
+export default withPageLayout(Page404WithoutPageLayout)
