@@ -1,13 +1,21 @@
+import ThemeToggle from "components/ThemeToggle"
+
 const PageHeader: React.FC = () => {
     return (
         <div className="pageHeader">
             <div className="centerContainer">
-                <a className="rootLink" href="/">
-                    /home/hung
-                </a>
-                <span className="current">
-                    /notes <span className="indicator">❙</span>
-                </span>
+                <div className="groups">
+                    <div className="group">
+                        <a className="rootLink" href="/">
+                            /home/hung
+                        </a>
+                        <span className="current">
+                            /notes <span className="indicator">❙</span>
+                        </span>
+                    </div>
+
+                    <ThemeToggle />
+                </div>
             </div>
             <style jsx>{`
                 .pageHeader {
@@ -41,6 +49,12 @@ const PageHeader: React.FC = () => {
 
                     animation: blinking 1s infinite;
                     font-size: 18px;
+                }
+
+                .groups {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                 }
             `}</style>
         </div>

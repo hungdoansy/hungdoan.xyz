@@ -11,6 +11,10 @@ body {
         Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 #__next {
     min-height: 100vh;
     display: flex;
