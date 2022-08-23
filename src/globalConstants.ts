@@ -3,4 +3,9 @@ const globalConstants = {
     SiteURL: "https://www.hungdoansy.me",
 }
 
+export enum Theme {
+    Light = "light",
+    Dark = "dark",
+}
+
 export default globalConstants

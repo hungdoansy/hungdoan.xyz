@@ -1,8 +1,9 @@
-import { useState } from "react"
+import useThemeContext from "contexts/theme/useThemeContext"
+import { Theme } from "globalConstants"
 
 const ThemeToggle: React.FC = () => {
-    const [isDarkMode, setDarkMode] = useState(false)
-    const theme = isDarkMode ? "dark" : "light"
+    const [theme, setTheme] = useThemeContext()
+    const isDarkMode = theme === Theme.Dark
 
     return (
         <div
@@ -10,7 +11,7 @@ const ThemeToggle: React.FC = () => {
             role="button"
             tabIndex={0}
             data-theme={theme}
-            onClick={() => setDarkMode((is) => !is)}
+            onClick={() => setTheme(isDarkMode ? Theme.Light : Theme.Dark)}
         >
             <div className="content css-76fjlr">
                 <div className="stars css-16xvjce">
