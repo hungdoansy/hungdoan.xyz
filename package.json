@@ -14,7 +14,7 @@
     },
     "scripts": {
         "new": "zx scripts/createArticle.mjs",
-        "dev": "NODE_OPTIONS='--inspect' next dev",
+        "dev": "NODE_OPTIONS='--inspect' PORT=3311 next dev",
         "build": "next build",
         "start": "next start",
         "lint": "eslint .",
