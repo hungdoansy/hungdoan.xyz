@@ -107,7 +107,13 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
             },
             image: (href: string, title: string, text: string): string => {
                 const prefix = "https://raw.githubusercontent.com/hungdoansy/portfolio/main/public"
-                const src = (isProd ? prefix : "") + `/notes/${date}/${slug}/${href}`
+                const src = (() => {
+                    if (href.startsWith("http")) {
+                        return href
+                    }
+
+                    return (isProd ? prefix : "") + `/notes/${date}/${slug}/${href}`
+                })()
                 return `<img src="${src}" alt="${text}">`
             },
             link(href: string, title: string, text: string): string | false {
