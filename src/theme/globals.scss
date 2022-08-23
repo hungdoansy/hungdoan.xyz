@@ -11,8 +11,15 @@ body {
         Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
+[data-theme="dark"] body {
+    background-color: #0d1117;
+}
+
 * {
     box-sizing: border-box;
+
+    transition: background 100ms linear 0s;
+    will-change: background;
 }
 
 #__next {

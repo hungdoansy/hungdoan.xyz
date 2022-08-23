@@ -1,13 +1,14 @@
 import type { GetStaticProps, NextPage, GetStaticPaths } from "next"
+import { useEffect } from "react"
 import { marked } from "marked"
 import hljs from "highlight.js"
 import { LineFocusPlugin } from "highlightjs-focus"
-import "highlight.js/styles/base16/equilibrium-light.css"
 
 import { Page404WithoutPageLayout } from "pages/404"
 import { readMarkdownFile, verifyDate, verifySlug } from "utils"
 import withPageLayout from "components/PageLayout/withPageLayout"
-import globalConstants from "globalConstants"
+import globalConstants, { Theme } from "globalConstants"
+import useThemeContext from "contexts/theme/useThemeContext"
 
 const env = process.env.NODE_ENV || "development"
 const isProd = env === "production"
@@ -62,6 +63,19 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 
 const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) => {
     let content = ""
+    const [theme] = useThemeContext()
+
+    useEffect(() => {
+        const isDarkMode = theme === Theme.Dark
+        const checker = async () => {
+            // @ts-ignore
+            if (isDarkMode) import("highlight.js/styles/base16/solarized-dark.css")
+            // @ts-ignore
+            else import("highlight.js/styles/base16/solarized-light.css")
+        }
+        checker()
+    }, [theme])
+
     if (!isWrongPath) {
         hljs.addPlugin(
             new LineFocusPlugin({

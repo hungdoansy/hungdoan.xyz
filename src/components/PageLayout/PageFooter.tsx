@@ -24,6 +24,13 @@ const PageFooter: React.FC = () => {
                     display: flex;
                     justify-content: space-between;
                 }
+
+                :global([data-theme="dark"]) {
+                    .pageFooter {
+                        background: #22223b;
+                        color: #adb5bd;
+                    }
+                }
             `}</style>
         </footer>
     )

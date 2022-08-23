@@ -56,6 +56,20 @@ const PageHeader: React.FC = () => {
                     align-items: center;
                     justify-content: space-between;
                 }
+
+                :global([data-theme="dark"]) {
+                    .pageHeader {
+                        background: #22223b;
+                    }
+
+                    .rootLink {
+                        color: #eeeeee;
+                    }
+
+                    .current {
+                        color: #adb5bd;
+                    }
+                }
             `}</style>
         </div>
     )
