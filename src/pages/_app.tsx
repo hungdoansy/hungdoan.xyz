@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { AppProps } from "next/app"
 import getConfig from "next/config"
+import dynamic from "next/dynamic"
 
-import ThemeContext from "contexts/theme"
-import { Theme } from "globalConstants"
+// ThemeContextProvider uses localStorage so it must not be SSR
+const ThemeContextProvider = dynamic(() => import("contexts/theme").then((mod) => mod.ThemeContextProvider), {
+    ssr: false,
+})
 
 import "@atlaskit/css-reset"
 import "theme/globals.scss"
@@ -14,18 +17,10 @@ const { builtTimestamp } = publicRuntimeConfig
 
 const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     console.log(`Built time: %c${new Date(Number(builtTimestamp))}`, "color: #bada55")
-
-    const values = useState(Theme.Light)
-    const [theme] = values
-
-    useEffect(() => {
-        document.documentElement.setAttribute("data-theme", theme)
-    }, [theme])
-
     return (
-        <ThemeContext.Provider value={values}>
+        <ThemeContextProvider>
             <Component {...pageProps} />
-        </ThemeContext.Provider>
+        </ThemeContextProvider>
     )
 }
 
