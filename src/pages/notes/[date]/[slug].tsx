@@ -69,9 +69,9 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
         const isDarkMode = theme === Theme.Dark
         const checker = async () => {
             // @ts-ignore
-            if (isDarkMode) import("highlight.js/styles/base16/solarized-dark.css")
+            if (isDarkMode) import("highlight.js/styles/github-dark.css")
             // @ts-ignore
-            else import("highlight.js/styles/base16/solarized-light.css")
+            else import("highlight.js/styles/github.css")
         }
         checker()
     }, [theme])

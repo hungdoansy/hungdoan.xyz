@@ -408,8 +408,7 @@ h1 {
     .github-theme {
         color: #adb5bd;
 
-        code {
-            color: #bfa2db;
+        p > code {
             background-color: rgba(255, 255, 255, 0.1);
         }
 
