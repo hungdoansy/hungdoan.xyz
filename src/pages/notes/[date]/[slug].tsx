@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { marked } from "marked"
 import hljs from "highlight.js"
 import { LineFocusPlugin } from "highlightjs-focus"
+import Head from "next/head"
 
 import { Page404WithoutPageLayout } from "pages/404"
 import { readMarkdownFile, verifyDate, verifySlug } from "utils"
@@ -63,6 +64,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 
 const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) => {
     let content = ""
+    let title = ""
     const [theme] = useThemeContext()
 
     useEffect(() => {
@@ -140,12 +142,23 @@ const NotePage: NextPage<PageProps> = ({ markdown, date, slug, isWrongPath }) =>
         }
         marked.use({ renderer: customRenderer })
         content = marked.parse(markdown)
+
+        const tokens = marked.lexer(markdown)
+        title = (tokens[0] as marked.Tokens.Heading).text
     }
 
     if (isWrongPath) {
         return <Page404WithoutPageLayout />
     }
-    return <div className="github-theme noteContent" dangerouslySetInnerHTML={{ __html: content }} />
+    return (
+        <>
+            <div className="github-theme noteContent" dangerouslySetInnerHTML={{ __html: content }} />
+
+            <Head>
+                <title>{title} - /home/hung</title>
+            </Head>
+        </>
+    )
 }
 
 export default withPageLayout(NotePage)
